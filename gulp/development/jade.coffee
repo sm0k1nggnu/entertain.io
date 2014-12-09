@@ -4,7 +4,7 @@ module.exports = (gulp) ->
   gulp.task 'build:jade', ->
     gulp.src([
       'src/**/*.jade'
-      '!src/app.ng.jade'
+      '!src/app.jade'
     ])
     .pipe(
       jade()
