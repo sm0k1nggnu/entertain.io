@@ -1,9 +1,13 @@
 .entry {
-  color: #333;
-  .entry--add {
-    margin: {
-      left: 10px;
-      right: 10px;
+  ul.entries {
+    margin: 0;
+    li {
+      float: left;
+      display: block;
+      width: 200px;
+      height: 200px;
+      border: 1px solid #eee;
+      margin: 10px;
     }
   }
 }

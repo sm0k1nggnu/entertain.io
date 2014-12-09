@@ -1,3 +1,34 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .app {
   color: blue;
+
+  header {
+    height: 75px;
+    width: 100%;
+    background: #131313;
+    display: block;
+
+    .logo {
+      float: right;
+      margin-right: 20px;
+      margin-top: 17px;
+      span {
+        &.a {
+          color: white;
+          text-transform: uppercase;
+          font-weight: bold;
+          font-size: 28px;
+        }
+        &.b {
+          color: white;
+          text-transform: uppercase;
+          font-size: 28px;
+        }
+      }
+    }
+  }
 }
