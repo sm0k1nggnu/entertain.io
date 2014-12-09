@@ -8,4 +8,4 @@ gulp.on 'task_err', (e) ->
     process.exit 1
 
 
-require('gulp/development') gulp
+require('./gulp/development') gulp
