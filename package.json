@@ -34,6 +34,7 @@
     "gulp-load-plugins": "~0.7.1",
     "chai": "~1.10.0",
     "install": "~0.1.7",
-    "npm": "~2.1.8"
+    "npm": "~2.1.8",
+    "gulp-run-sequence": "~0.3.2"
   }
 }
