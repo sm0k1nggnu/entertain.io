@@ -1,14 +1,14 @@
 gulp      = require 'gulp'
 sequence  = require 'gulp-run-sequence'
 
-require('./gulp/development/clean') gulp
-require('./gulp/development/coffee') gulp
-require('./gulp/development/jade') gulp
-require('./gulp/development/scss') gulp
-require('./gulp/development/vendor') gulp
-require('./gulp/development/watch') gulp
-require('./gulp/development/webserver') gulp
-require('./gulp/development/specs') gulp
+require('./clean') gulp
+require('./coffee') gulp
+require('./jade') gulp
+require('./scss') gulp
+require('./vendor') gulp
+require('./watch') gulp
+require('./webserver') gulp
+require('./specs') gulp
 
 
 module.exports = (gulp) ->
