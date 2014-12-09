@@ -26,4 +26,18 @@ module.exports = (gulp) ->
       'build:watch'
     )
 
+
+  gulp.task 'build:once', ->
+    sequence(
+      'build:clean'
+      [
+        'build:scss'
+        'build:jade'
+        'build:coffee'
+        'build:bower'
+        'build:copy:scripts'
+      ]
+    )
+
+
   gulp.task 'default', -> sequence 'build'
