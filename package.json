@@ -1,0 +1,39 @@
+{
+  "name": "entertain.io",
+  "version": "0.0.1",
+  "description": "entertain.io",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/michaelzoidl/entertain.io.git"
+  },
+  "author": "Entwicklerstube",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelzoidl/entertain.io/issues"
+  },
+  "homepage": "https://github.com/michaelzoidl/entertain.io",
+  "dependencies": {
+    "eventric": "~0.1.7"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.8.0",
+    "gulp": "~3.8.10",
+    "gulp-jade": "~0.9.0",
+    "gulp-coffee": "~2.2.0",
+    "gulp-webserver": "~0.8.7",
+    "gulp-sass": "~1.1.0",
+    "gulp-util": "~3.0.1",
+    "gulp-concat": "~2.4.1",
+    "gulp-rimraf": "~0.1.1",
+    "main-bower-files": "~2.4.0",
+    "gulp-filter": "~1.0.2",
+    "gulp-wrap-commonjs": "~0.1.11",
+    "commonjs-require": "~1.4.6",
+    "gulp-mocha": "~2.0.0",
+    "gulp-load-plugins": "~0.7.1",
+    "chai": "~1.10.0",
+    "install": "~0.1.7",
+    "npm": "~2.1.8"
+  }
+}

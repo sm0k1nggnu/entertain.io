@@ -1,0 +1,16 @@
+html(ng-app="entertain.io.app")
+head
+  meta(charset="UTF-8")
+  title entertain.io
+
+  link(href='/styles/vendor.css', rel='stylesheet')
+  link(href='/styles/app.css', rel='stylesheet')
+  script(type="text/javascript" src='/scripts/commonjs-require.js')
+  script(type="text/javascript" src='/scripts/vendor.js')
+body
+  div(ui-view="")
+  script(type='text/javascript', src='/scripts/app.js')
+  script(type='text/javascript').
+    window.$ = window.jQuery = require('jquery');
+    require('angularjs');
+    require('entertain.io-app/src/ui/app.ng');
