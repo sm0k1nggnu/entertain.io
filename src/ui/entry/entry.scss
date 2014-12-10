@@ -10,11 +10,49 @@
       // height: 200px;
       border: 1px solid #eee;
       margin: 5px;
-      width: calc((100vw / 5) - 1.2rem);
-      height: calc(((100vw / 5) - 1.2rem) * .833);
-
       -webkit-animation-duration: .3s;
       -webkit-animation-fill-mode: both;
     }
+  }
+}
+
+@media only screen and (max-width: 1440px) and (min-width: 1280px) {
+  ul.entries li {
+    width: calc((100vw / 5) - 1.2rem) !important;
+    height: calc(((100vw / 5) - 1.2rem) * .833) !important;
+  }
+}
+
+@media only screen and (max-width: 1130px) and (min-width: 1024px) {
+  ul.entries li {
+    width: calc((100vw / 4) - 1.2rem) !important;
+    height: calc(((100vw / 4) - 1.2rem) * .833) !important;
+  }
+}
+@media only screen and (max-width: 1279px) and (min-width: 1131px) {
+  ul.entries li {
+    width: calc((100vw / 4) - 1.2rem) !important;
+    height: calc(((100vw / 4) - 1.2rem) * .833) !important;
+  }
+}
+
+@media only screen and (max-width: 1023px) and (min-width: 700px) {
+  ul.entries li {
+    width: calc((100vw / 3) - 1.2rem) !important;
+    height: calc(((100vw / 3) - 1.2rem) * .833) !important;
+  }
+}
+
+@media only screen and (max-width: 699px) and (min-width: 480px) {
+  ul.entries li {
+    width: calc((100vw / 2) - 1.2rem) !important;
+    height: calc(((100vw / 2) - 1.2rem) * .833) !important;
+  }
+}
+
+@media only screen and (max-width: 479px) and (min-width: 0px) {
+  ul.entries li {
+    width: calc((100vw / 1) - 1.2rem) !important;
+    height: calc(((100vw / 1) - 1.2rem) * .833) !important;
   }
 }
