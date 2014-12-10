@@ -1,12 +1,5 @@
 .entry(ng-controller="EntryCtrl")
   ul.entries
-    li
-    li
-    li
-    li
-    li
-    li
-    li
-    li
-    li
-    li
+    li(ng-repeat="entry in entries", style="background-image: url({{entry.image.big}});")
+      .gradient
+      span {{entry.title}}
