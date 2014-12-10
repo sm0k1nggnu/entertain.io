@@ -17,7 +17,7 @@
 
 ul.entries li {-webkit-animation-duration:.3s;-moz-animation-duration:.3s;-o-animation-duration:.3s;animation-duration:.3s;-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both}
 
-@media only screen and (max-width: 1440px) and (min-width: 1280px) {
+@media only screen and (min-width: 1280px) {
   ul.entries li {
     width: calc((100vw / 5) - 1.2rem) !important;
     height: calc(((100vw / 5) - 1.2rem) * .833) !important;
