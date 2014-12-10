@@ -1,13 +1,20 @@
 .entry {
   ul.entries {
+    height: calc(100vh - 54px);
     margin: 0;
+    padding: 0;
     li {
       float: left;
       display: block;
-      width: 200px;
-      height: 200px;
+      // width: 200px;
+      // height: 200px;
       border: 1px solid #eee;
-      margin: 10px;
+      margin: 5px;
+      width: calc((100vw / 5) - 1.2rem);
+      height: calc(((100vw / 5) - 1.2rem) * .833);
+
+      -webkit-animation-duration: .3s;
+      -webkit-animation-fill-mode: both;
     }
   }
 }
