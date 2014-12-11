@@ -1,4 +1,5 @@
 .entry(ng-controller="EntryCtrl")
+  h1 Aktuell sind {{userAmount}} online
   button(ng-click="yeah()") Yeah
   ul.entries
     li(ng-repeat="entry in entries", style="background-image: url({{entry.images.normal}});")

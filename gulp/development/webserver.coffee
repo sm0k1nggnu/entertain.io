@@ -18,9 +18,14 @@ module.exports = (gulp) ->
     http.listen 8001, ->
       console.log "yea listengin!"
 
+    userAmount = 0
     io.on 'connection', (socket) ->
+      ++userAmount
       console.log "a user and stuff"
+      io.emit 'userAmount', userAmount
       socket.on 'disconnect', ->
+        --userAmount
+        io.emit 'userAmount', userAmount
         console.log "und weg issa"
 
       socket.on 'yeah', (msg) ->

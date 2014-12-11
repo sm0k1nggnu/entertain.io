@@ -27,6 +27,7 @@ module.exports = (gulp) ->
     )
 
 
+  # Thats the task our server runs
   gulp.task 'build:once', ->
     sequence(
       'build:clean'
