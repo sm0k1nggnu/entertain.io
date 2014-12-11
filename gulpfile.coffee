@@ -8,4 +8,6 @@ gulp.on 'task_err', (e) ->
     process.exit 1
 
 
+GLOBAL.__projectdir = __dirname + '/build/ui'
+
 require('./gulp/development') gulp
