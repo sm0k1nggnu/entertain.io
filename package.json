@@ -14,7 +14,10 @@
   },
   "homepage": "https://github.com/michaelzoidl/entertain.io",
   "dependencies": {
-    "eventric": "~0.1.7"
+    "eventric": "~0.1.7",
+    "socket.io": "~1.2.1",
+    "express": "~4.10.5",
+    "path": "~0.4.9"
   },
   "devDependencies": {
     "coffee-script": "~1.8.0",
@@ -35,6 +38,8 @@
     "chai": "~1.10.0",
     "install": "~0.1.7",
     "npm": "~2.1.8",
-    "gulp-run-sequence": "~0.3.2"
+    "gulp-run-sequence": "~0.3.2",
+    "connect-livereload": "~0.5.2",
+    "tiny-lr": "~0.1.4"
   }
 }
