@@ -1,5 +1,6 @@
 .entry(ng-controller="EntryCtrl")
+  button(ng-click="yeah()") Yeah
   ul.entries
-    li(ng-repeat="entry in entries", style="background-image: url({{entry.image.big}});")
+    li(ng-repeat="entry in entries", style="background-image: url({{entry.images.normal}});")
       .gradient
-      span {{entry.title}}
+      span {{entry.caption}}
