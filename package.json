@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/michaelzoidl/entertain.io",
   "dependencies": {
-    "eventric": "~0.1.7",
+    "eventric": "~0.1.13",
     "socket.io": "~1.2.1",
     "express": "~4.10.5",
     "path": "~0.4.9"
