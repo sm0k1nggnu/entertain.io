@@ -15,18 +15,22 @@ module.exports = (gulp) ->
 
     app.use( express.static(__projectdir) )
 
-    http.listen 8001, ->
+    http.listen 61337, ->
       console.log "yea listengin!"
 
     userAmount = 0
     io.on 'connection', (socket) ->
       ++userAmount
-      console.log "a user and stuff"
+      console.log "User Connected"
+
+      # Update User-Counter
       io.emit 'userAmount', userAmount
+
+
       socket.on 'disconnect', ->
         --userAmount
         io.emit 'userAmount', userAmount
-        console.log "und weg issa"
+        console.log "User disconnected"
 
       socket.on 'yeah', (msg) ->
-        io.emit 'yeah', msg
+        io.emit 'yeah', "User pressed Button with msg #{msg}"
