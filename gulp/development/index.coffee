@@ -9,12 +9,14 @@ require('./vendor') gulp
 require('./watch') gulp
 require('./webserver') gulp
 require('./specs') gulp
+require('./static') gulp
 
 
 module.exports = (gulp) ->
   gulp.task 'build', ->
     sequence(
       'build:clean'
+      'static:images'
       [
         'build:scss'
         'build:jade'
