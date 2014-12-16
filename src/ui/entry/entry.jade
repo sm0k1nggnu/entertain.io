@@ -1,7 +1,16 @@
-.entry(ng-controller="EntryCtrl")
-  h1 Aktuell sind {{userAmount}} online
-  button(ng-click="yeah()") Yeah
-  ul.entries
-    li(ng-repeat="entry in entries", style="background-image: url({{entry.images.normal}});")
-      .gradient
-      span {{entry.caption}}
+.entry-ctrl(ng-controller="EntryCtrl")
+  .entries
+    div.entry-wrapper(ng-repeat="entry in entries")
+      .entry(style="background-image: url({{entry.image}});")
+        .extra
+        .gradient
+        .meta
+          span.caption {{entry.caption}}
+          span.description {{entry.description}}
+          span.time 3 hours ago by t3n magazine
+  .sidebar
+    .ad.schema
+      button(ng-click="updateFeed()") Update Feed
+
+    .newsletter.schema NEWSLETTER
+    .top.schema TOP FEEDS

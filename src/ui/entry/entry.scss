@@ -1,82 +1,98 @@
-.entry {
-  ul.entries {
-    height: calc(100vh - 54px);
-    margin: 0;
-    padding: 0;
-    li {
-      float: left;
-      display: block;
-      background-size: cover;
-      background-position: center;
+.entry-ctrl {
+  margin: auto;
+  width: 970px;
+  position: relative;
+  .entries {
+    float: left;
+    width: 635px;
+  }
+  .sidebar {
+    float: left;
+    .schema {
+      width: 320px;
       border: 1px solid #eee;
-      margin: 5px;
-      transition: all .3s ease;
-      position: relative;
-
-      .gradient {
-        width: 100%;
-        height: 100px;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        background-image: -webkit-gradient(
-          linear, left top, left bottom, from(rgba(0,0,0,0)),
-          to(rgba(0,0,0,1)), color-stop(.4,rgba(0,0,0,.3))
-        );
-      }
-
-      span {
-        position: absolute;
-        left: 10px;
-        bottom: 10px;
-        color: white;
-        text-shadow: 0 0 5px #000;
-        font-size: 18px;
-        font-weight: bold;
-      }
+      background: #fff;
+      display: block;
+      margin: 15px 0;
+      padding: 10px;
+      font-family: Open Sans;
+      font-size: 10px;
+      font-weight: 600;
+      color: #666;
+    }
+    .ad {
+      height: 250px;
+    }
+    .newsletter {
+      height: 125px;
+    }
+    .top {
+      height: calc(100vh - 100px);
     }
   }
-}
+  .entry-wrapper {
+    float: left;
 
-ul.entries li {-webkit-animation-duration:.3s;-moz-animation-duration:.3s;-o-animation-duration:.3s;animation-duration:.3s;-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both}
-
-@media only screen and (min-width: 1280px) {
-  ul.entries li {
-    width: calc((100vw / 5) - 1.2rem) !important;
-    height: calc(((100vw / 5) - 1.2rem) * .833) !important;
-  }
-}
-
-@media only screen and (max-width: 1130px) and (min-width: 1024px) {
-  ul.entries li {
-    width: calc((100vw / 4) - 1.2rem) !important;
-    height: calc(((100vw / 4) - 1.2rem) * .833) !important;
-  }
-}
-@media only screen and (max-width: 1279px) and (min-width: 1131px) {
-  ul.entries li {
-    width: calc((100vw / 4) - 1.2rem) !important;
-    height: calc(((100vw / 4) - 1.2rem) * .833) !important;
-  }
-}
-
-@media only screen and (max-width: 1023px) and (min-width: 700px) {
-  ul.entries li {
-    width: calc((100vw / 3) - 1.2rem) !important;
-    height: calc(((100vw / 3) - 1.2rem) * .833) !important;
-  }
-}
-
-@media only screen and (max-width: 699px) and (min-width: 480px) {
-  ul.entries li {
-    width: calc((100vw / 2) - 1.2rem) !important;
-    height: calc(((100vw / 2) - 1.2rem) * .833) !important;
-  }
-}
-
-@media only screen and (max-width: 479px) and (min-width: 0px) {
-  ul.entries li {
-    width: calc((100vw / 1) - 1.2rem) !important;
-    height: calc(((100vw / 1) - 1.2rem) * .833) !important;
+    .entry {
+      width: 600px;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      transition: all .1s ease;
+      border: 1px solid #dadada;
+      background: #efefef;
+      box-shadow: 0px 0px 3px #ddd;
+      margin: 15px;
+      background-size: cover;
+      background-position: center;
+      .extra {
+        flex: 1;
+        flex-wrap: wrap;
+      }
+      .gradient {
+        flex: 1;
+        flex-wrap: wrap;
+          background-image: -webkit-gradient(
+            linear, left top, left bottom, from(rgba(0,0,0,0)),
+            to(#efefef), color-stop(.0,rgba(0,0,0,0))
+          );
+        max-height: 50px;
+      }
+      .meta {
+        flex: 1;
+        height: 125px;
+        background: #efefef;
+        .description {
+          margin-left: 15px;
+          display: block;
+          font-family: Open Sans;
+          font-size: 12px;
+          color: #999;
+          margin-top: 5px;
+          margin-bottom: 5px;
+          width: 95%;
+        }
+        .caption {
+          font-family: Open Sans;
+          color: #202020;
+          font-weight: 700;
+          font-size: 18px;
+          margin-left: 15px;
+          margin-top: 15px;
+          display: block;
+          width: 95%;
+        }
+        .time {
+          font-family: Open Sans;
+          font-size: 10px;
+          color: #333;
+          font-weight: 600;
+          text-transform: uppercase;
+          margin-left: 15px;
+          margin-top: 5px;
+          display: block;
+        }
+      }
+    }
   }
 }
