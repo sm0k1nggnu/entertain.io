@@ -1,7 +1,7 @@
 # entertain.io
 
 ## Deploying
-Aktuell wird mit jeden Push in den Master-Branch der Source gezogen und neu deployed plus der ganze Workespace reseted, ist nichts wildes wenn man öfters commited, nur sollte jeder wissen dass der Stand der commited wird nach ~1 Min auf entertain.io zu erreichen ist.
+Aktuell wird mit jeden Push in den Master-Branch der Source gezogen und neu deployed plus der ganze Workespace resetet, ist nichts wildes wenn man öfters commited, nur sollte jeder wissen dass der Stand der commited wird nach ~1 Min auf <a href="http://entertain.io">entertain</a>.io zu erreichen ist.
 
 ## Getting started
 Clone Repo<br>
