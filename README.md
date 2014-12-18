@@ -22,4 +22,4 @@ Now you should see the Page on the Port 63647 (<a href="http://localhost:63647" 
 
 ---
 
-<a href="https://github.com/michaelzoidl/entertain.io/blob/master/LICENCE">LICENCE</a>  |  <a href="https://github.com/michaelzoidl/entertain.io/blob/master/THANKS">Thanks</a>
+<a href="https://github.com/michaelzoidl/entertain.io/blob/master/LICENCE">Licence</a>  |  <a href="https://github.com/michaelzoidl/entertain.io/blob/master/THANKS">Thanks</a>
