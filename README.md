@@ -19,3 +19,7 @@ Run Gulp<br>
 
 Now you should see the Page on the Port 63647 (<a href="http://localhost:63647" target="_blank">localhost:63647</a>)<br>
 *The reason for this high port is uberspace, they reserved ports til 61000 for themself. <a href="https://wiki.uberspace.de/development:nodejs" target="_blank">source</a>*
+
+---
+
+<a href="https://github.com/michaelzoidl/entertain.io/blob/master/LICENCE">LICENCE</a>  |  <a href="https://github.com/michaelzoidl/entertain.io/blob/master/THANKS">Thanks</a>
