@@ -10,7 +10,7 @@
     float: left;
     .schema {
       width: 320px;
-      border: 1px solid #eee;
+      border: 1px solid #ddd;
       background: #fff;
       display: block;
       margin: 15px 0;
@@ -40,7 +40,7 @@
       flex-direction: column;
       transition: all .1s ease;
       border: 1px solid #dadada;
-      background: #efefef;
+      background: #fff;
       box-shadow: 0px 0px 3px #ddd;
       margin: 15px;
       background-size: cover;
@@ -54,14 +54,14 @@
         flex-wrap: wrap;
           background-image: -webkit-gradient(
             linear, left top, left bottom, from(rgba(0,0,0,0)),
-            to(#efefef), color-stop(.0,rgba(0,0,0,0))
+            to(#fff), color-stop(.0,rgba(0,0,0,0))
           );
         max-height: 50px;
       }
       .meta {
         flex: 1;
         height: 125px;
-        background: #efefef;
+        background: #fff;
         .description {
           margin-left: 15px;
           display: block;
