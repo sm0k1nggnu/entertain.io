@@ -1,7 +1,7 @@
 <br>
 <br>
 <p align="center">
-<img src="http://mjz.io/entertainio.jpg"/>
+<img src="http://mjz.io/Unbenannt-1.png"/>
 </p>
 <br>
 <br>
