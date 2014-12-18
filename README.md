@@ -19,18 +19,3 @@ Run Gulp<br>
 
 Now you should see the Page on the Port 63647 (<a href="http://localhost:63647" target="_blank">localhost:63647</a>)<br>
 *The reason for this high port is uberspace, they reserved ports til 61000 for themself. <a href="https://wiki.uberspace.de/development:nodejs" target="_blank">source</a>*
-
-
-
-## Deploying
-Aktuell wird mit jeden Push in den Master-Branch der Source gezogen und neu deployed plus der ganze Workespace resetet, ist nichts wildes wenn man öfters commited, nur sollte jeder wissen dass der Stand der commited wird nach ~1 Min auf <a href="http://entertain.io">entertain</a>.io zu erreichen ist.
-
-
-
-## Idea
-EntertainIO hat ein relativ simples Konzept, die Zielgruppe sind Leute die zu Faul sind einen RSS-Reader einzurichten + zu pflegen (neue Sources followen, ältere kicken, das übernehmen hier die einzelnen Moderatoren die die Feeds pflegen).  Zudem gibt es noch den Community-Effekt durch Up- and Downvotes einzelner Feeds und Kommentare - so kann man trends aus dem Netz ab einer kritischen Useranzahl auf EntertainIO schon erkennen.
-
-Alles soll in einer ähnlichen Optik wie die GAG Seiten wie Hugelol oder 9GAG aufgebaut sein (die Posts untereinander), bereits gelesene Feeds sollen dementsprechend markiert sein bzw. ausgeblendet werden (sobald die Posts auf dem Desktop zu sehen waren sind'se gelesen.
-
-Die USPs von dem Tool sind: Idiotensicher, simple, effizient (viele Informationen auf kurze Zeit), auf jedem Device nutzbar.
-Quellen der Posts: div. RSS-Feeds (wenn das Konzept aufgeht kann man Social Netzwerke mit deren APIs noch einfügen wie YouTube, Twitter, Facebook, Pinterest, etc..)
