@@ -13,32 +13,28 @@ body
     header.header
       .logo-wrapper
         .logo
-          span.a Entertain
-          span.b IO
+          a(href=".")
+            span.a Entertain
+            span.b IO
       navigation.navigation
         ul
           li
             a.active Overview
             a.disabled Tech
             a.disabled Science
-            a.disabled Music
-            a.disabled TV Shows
+            a.disabled Gaming
+            a.disabled Fashion
+            a.disabled Art
+            a.disabled Random
     .main
       .content(ui-view="")
     .footer
-      span
-        | This is a 
-        strong EntwicklerStube.com
-        |  project
+      strong This is the BETA version, next planned release is on the 1th January 2015
       ul
-        li
-          a(href="") Team
-        li
-          a(href="") Impress
-        li
-          a(href="") Thanks
-        li
-          a(href="") Became a moderator
+        li.github
+          a(href="#", target="_blank")
+            span Github
+            img(src="/images/github.png")
   script(type='text/javascript', src='scripts/app.js')
   script(type='text/javascript').
     window.$ = window.jQuery = require('jquery');

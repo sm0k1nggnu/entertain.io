@@ -30,13 +30,14 @@ body {
   padding-top: 7px;
   padding-left: 10px;
   overflow: hidden;
-  span {
-    font-family: Open Sans;
-    text-transform: uppercase;
-    font-size: 12px;
-    display: block;
-    float: left;
-    font-weight: 600;
+  .github {
+    img {
+      height: 20px;
+      margin-left: 10px;
+    }
+    span {
+      // margin-left: 10px;
+    }
   }
   ul {
     float: right;
@@ -68,6 +69,14 @@ body {
     overflow: hidden;
     background: #212121;
     display: block;
+
+    .logo {
+      a {
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
 
     .logo-wrapper {
       width: 970px;
