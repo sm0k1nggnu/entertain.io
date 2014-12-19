@@ -33,6 +33,7 @@ module.exports = (gulp) ->
   gulp.task 'build:once', ->
     sequence(
       'build:clean'
+      'static:images'
       [
         'build:scss'
         'build:jade'
