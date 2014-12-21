@@ -12,7 +12,7 @@ module.exports = (gulp) ->
     app.use( express.static(__projectdir) )
 
     http.listen 63647, ->
-      console.log "yea listengin!"
+      console.log "Server runs!"
 
 
     feeds = [
