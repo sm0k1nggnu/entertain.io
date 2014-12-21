@@ -24,12 +24,18 @@ body
             a.disabled Science
             a.disabled Gaming
             a.disabled Fashion
+            a.disabled Viral
+            a.disabled Lifestyle
+            a.disabled Music
             a.disabled Art
-            a.disabled Random
+            a.disabled Sport
     .main
       .content(ui-view="")
+      .sidebar
+        //- button(ng-click="updateFeed()") Update Feed
+        .top.schema PLACE FOR SOME META DATA
     .footer
-      strong This is the BETA version, next planned release is on the 1th January 2015
+      strong This is the developer version, next planned release is on the 1th January 2015
       ul
         li.github
           a(href="https://github.com/michaelzoidl/entertain.io", target="_blank")

@@ -1,10 +1,39 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600);
+@import url(http://fonts.googleapis.com/css?family=Belgrano|Quando);
 
 body {
   margin: 0;
   padding: 0;
-  background: #f5f5f5;
+  background: #ecf0f1;
+  // background: #efefef;
 }
+
+.sidebar {
+  float: right;
+  background: #fefefe;
+  border-left: 1px solid #ddd;
+  align-self: stretch;
+  .schema {
+    width: 320px;
+    // border: 1px solid #ddd;
+    display: block;
+    padding: 10px;
+    font-family: Open Sans;
+    font-size: 10px;
+    font-weight: 600;
+    color: #666;
+  }
+  .ad {
+    height: 250px;
+  }
+  .newsletter {
+    height: 125px;
+  }
+  .top {
+    // height: calc(100vh - 100px);
+  }
+}
+
 
 .app {
   display: flex;
@@ -16,6 +45,7 @@ body {
   flex: 1;
   overflow: auto;
   display: flex;
+  align-items: flex-start;
 }
 
 .content {
@@ -27,11 +57,15 @@ body {
 
 .footer {
   border: 1px solid #dadada;
-  background: #e6e6e6;
+  background: #fff;
   height: 35px;
   padding-top: 7px;
   padding-left: 10px;
   overflow: hidden;
+  strong {
+    font-size: 10px;
+    line-height: 20px;
+  }
   .github {
     img {
       height: 20px;
@@ -58,7 +92,7 @@ body {
         padding: 10px 10px;
         &:hover {
           text-decoration: none;
-          background-color: #dadada;
+          background-color: #efefef;
           padding: 10px 10px;
         }
       }
@@ -66,11 +100,12 @@ body {
   }
 }
   header {
-    height: 50px;
+    height: 52px;
     width: 100%;
     overflow: hidden;
-    background: #212121;
+    background: #fff;
     display: block;
+    border-bottom: 2px solid #ddd;
 
     .logo {
       a {
@@ -81,8 +116,8 @@ body {
     }
 
     .logo-wrapper {
-      width: 970px;
-      margin: auto;
+      // width: 970px;
+      margin-left: 20px;
     }
 
     .navigation {
@@ -94,13 +129,14 @@ body {
         li {
           list-style-type: none;
           a {
-            color: #fff;
+            color: #666;
             font-family: Open Sans;
             font-weight: 500;
+            font-size: 12px;
             text-transform: uppercase;
-            height: 36px;
+            height: 34px;
             min-width: 30px;
-            margin-top: 16px;
+            margin-top: 18px;
             display: block;
             float: left;
             margin-right: 20px;
@@ -112,10 +148,10 @@ body {
             }
             &:hover {
               text-decoration: none;
-              height: 34px;
+              height: 32px;
             }
             &.active {
-              height: 34px;
+              height: 32px;
             }
           }
         }
@@ -131,7 +167,7 @@ body {
         font-family: Open Sans;
         font-size: 24px;
         &.a {
-          color: #fff;
+          color: #444;
           text-transform: uppercase;
           font-weight: 700;
         }

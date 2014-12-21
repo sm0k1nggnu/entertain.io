@@ -1,47 +1,24 @@
 .entry-ctrl {
   margin: auto;
-  width: 970px;
+  // width: 970px;
   position: relative;
   .entries {
     float: left;
     width: 635px;
-  }
-  .sidebar {
-    float: left;
-    .schema {
-      width: 320px;
-      border: 1px solid #ddd;
-      background: #fff;
-      display: block;
-      margin: 15px 0;
-      padding: 10px;
-      font-family: Open Sans;
-      font-size: 10px;
-      font-weight: 600;
-      color: #666;
-    }
-    .ad {
-      height: 250px;
-    }
-    .newsletter {
-      height: 125px;
-    }
-    .top {
-      height: calc(100vh - 100px);
-    }
   }
   .entry-wrapper {
     float: left;
 
     .entry {
       width: 600px;
-      height: 350px;
+      height: 375px;
       display: flex;
       flex-direction: column;
       transition: all .1s ease;
-      border: 1px solid #dadada;
+      // border: 1px solid #dadada;
       background: #fff;
-      box-shadow: 0px 0px 3px #ddd;
+      // box-shadow: 0px 0px 3px #ddd;
+      border-bottom: 2px solid #efefef;
       margin: 15px;
       background-size: cover;
       background-position: center;
@@ -52,11 +29,11 @@
       .gradient {
         flex: 1;
         flex-wrap: wrap;
-          background-image: -webkit-gradient(
-            linear, left top, left bottom, from(rgba(0,0,0,0)),
-            to(#fff), color-stop(.0,rgba(0,0,0,0))
-          );
-        max-height: 50px;
+          // background-image: -webkit-gradient(
+          //   linear, left top, left bottom, from(rgba(0,0,0,0)),
+          //   to(#fff), color-stop(.0,rgba(0,0,0,0))
+          // );
+        max-height: 100px;
       }
       .meta {
         flex: 1;
@@ -65,12 +42,14 @@
         .description {
           margin-left: 15px;
           display: block;
-          font-family: Open Sans;
+          font-family: Lucida Grande;
           font-size: 12px;
           color: #999;
           margin-top: 5px;
           margin-bottom: 5px;
           width: 95%;
+          line-height: 18px;
+          color: #888;
         }
         .caption {
           font-family: Open Sans;
@@ -89,7 +68,7 @@
           font-weight: 600;
           text-transform: uppercase;
           margin-left: 15px;
-          margin-top: 5px;
+          margin-top: 10px;
           display: block;
         }
       }
