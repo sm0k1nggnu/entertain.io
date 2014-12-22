@@ -10,21 +10,37 @@ module.exports = (gulp) ->
       res.sendFile(__projectdir + '/index.html')
 
     app.get '/feeds.json', (req, res) ->
+      feedsCollection = []
       FeedParser = require("feedparser")
       request = require("request")
       req = request("http://feeds.wired.com/wired/index")
       feedparser = new FeedParser()
       req.on "error", (error) ->
-      feedsCollection = []
 
-      feedparser.on "end", (error) ->
+
+      # handle any request errors
+      req.on "response", (res) ->
+        stream = this
+        return @emit("error", new Error("Bad status code"))  unless res.statusCode is 200
+        stream.pipe feedparser
+        return
+
+      feedparser.on "end", ->
+        console.log "end"
+        console.log feedsCollection
         io.emit 'feedUpdate', feedsCollection
 
-      feedparser.on "readable", ->
-        stream = this
-        item = undefined
-        feedsCollection.push item while item = stream.read()
+      feedparser.on "error", (error) ->
 
+
+      # always handle errors
+      feedparser.on "readable", ->
+        # This is where the action is!
+        stream = this
+        meta = @meta # **NOTE** the "meta" is always available in the context of the feedparser instance
+        item = undefined
+        while item = stream.read()
+          feedsCollection.push item
 
     app.use( express.static(__projectdir) )
 
