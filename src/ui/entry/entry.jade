@@ -5,6 +5,11 @@
         .extra
         .gradient
         .meta
-          span.caption {{entry.caption}}
-          span.description {{entry.description}}
-          span.time 3 hours ago by t3n magazine
+          span.caption {{entry.title}}
+          span.description(ng-bind="entry.description | unsafe")
+          .time
+            span
+              | By 
+              a(href="http://wired.com") WIRED 
+              |, Author: {{entry.author}}
+            a(href="{{entry.link}}") more...
