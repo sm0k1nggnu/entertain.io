@@ -1,7 +1,13 @@
 entryModule = angular.module("entertain.io.app.entry", [])
 
-.controller 'EntryCtrl', ['$scope', '$http'
-  ($scope, $http) ->
+.filter 'unsafe', ($sce) ->
+  return (
+    (val) ->
+      return $sce.trustAsHtml val
+  )
+
+.controller 'EntryCtrl', ['$scope', '$http', '$sce'
+  ($scope, $http, $sce) ->
     $scope.entries = []
 
     socket = io()
@@ -12,6 +18,7 @@ entryModule = angular.module("entertain.io.app.entry", [])
 
     $http.get('/feeds.json')
     socket.on 'feedUpdate', (feeds) ->
+      console.log "feedupdate"
       for _feed_ in feeds
         feed =
           title: _feed_.title
@@ -25,7 +32,7 @@ entryModule = angular.module("entertain.io.app.entry", [])
 
         txt = texts.join ' '
 
-        feed.description = $sce.trustAsHtml txt
+        feed.description = txt.replace(/<(?:.|\n)*?>/gm, '')
         # console.log $(_feed_.description.replace(/'/g, '"'))
         # console.log jQuery.parseHTML(_feed_.description.replace(/'/g, '"'))
 
