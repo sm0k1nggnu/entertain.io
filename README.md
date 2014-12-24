@@ -6,7 +6,6 @@
 <br>
 <br>
 *Visit production version: <a target="_blank" href="http://entertain.io/#/">www.entertain.io</a>*<br>
-*Tip: press the 'Update Feed' button, runs a websocket request to the server which response a new dummy-feed (currently there a five dummy feeds <a href="https://github.com/michaelzoidl/entertain.io/blob/master/gulp/development/webserver.coffee#L18-L44">source-code</a>*
 
 
 ## Getting started
