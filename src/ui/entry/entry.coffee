@@ -24,18 +24,10 @@ entryModule = angular.module("entertain.io.app.entry", [])
           title: _feed_.title
           link: _feed_.link
 
-        $descriptionHtml = $ _feed_.summary.replace(/'/g, '"')
         descriptionHtml = _feed_.summary.replace(/'/g, '"')
-
-        feed.image = $descriptionHtml.find('img').first().attr('src')
-        texts = descriptionHtml.match /<p>(.*?)<\/p>/g
-
-        txt = texts.join ' '
-
-        feed.description = txt.replace(/<(?:.|\n)*?>/gm, '')
-        # console.log $(_feed_.description.replace(/'/g, '"'))
-        # console.log jQuery.parseHTML(_feed_.description.replace(/'/g, '"'))
-
+        try
+          feed.image = _feed_.description.match(/src="([^\"]*)"/g)[0].replace(/src=|"/g, "")
+        feed.description = _feed_.description.replace(/<(?:.|\n)*?>/gm, '')
         $scope.entries.push feed
         $scope.$apply()
       return
