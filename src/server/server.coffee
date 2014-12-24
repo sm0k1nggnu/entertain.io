@@ -58,28 +58,4 @@ io.on 'connection', (socket) ->
     console.log "User disconnected"
 
 
-
 module.exports = app
-
-
-
-
-
-
-   # app.get '/', (req, res) ->
-    #   res.sendFile(__projectdir + '/index.html')
-
-
-
-
-
-
-    # app.use( express.static(__projectdir) )
-
-    # http.listen 63647, ->
-    #   console.log "Server runs! -> localhost:63647"
-
-    # io.on 'connection', (socket) ->
-    #   console.log "User Connected"
-    #   socket.on 'disconnect', ->
-    #     console.log "User disconnected"
