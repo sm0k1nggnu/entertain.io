@@ -5,7 +5,8 @@ io        = require('socket.io')(http)
 FeedParser = require("feedparser")
 request = require("request")
 
-getParamFromArg = (param) -> process.argv[process.argv.indexOf(param)+1]
+getParamFromArg = (param) ->
+  process.argv[process.argv.indexOf(param)+1]
 
 __PORT = getParamFromArg '--port'
 __projectdir = "#{__dirname.replace('/src/server','')}/build/ui"
@@ -28,24 +29,24 @@ app.use express.static __projectdir
 app.get '/feeds.json', (req, res) ->
   feedsCollection = []
   req = request("http://www.drlima.net/feed/")
-  # req = request("http://feeds.wired.com/wired/index")
+
   feedparser = new FeedParser()
   req.on "error", (error) ->
-  # handle any request errors
+
   req.on "response", (res) ->
     stream = this
     return @emit("error", new Error("Bad status code"))  unless res.statusCode is 200
     stream.pipe feedparser
     return
+
   feedparser.on "end", ->
-    console.log "end"
-    console.log feedsCollection
     res.send feedsCollection
     io.emit 'feedUpdate', feedsCollection
+  
   feedparser.on "error", (error) ->
   # always handle errors
+
   feedparser.on "readable", ->
-    # This is where the action is!
     stream = this
     meta = @meta # **NOTE** the "meta" is always available in the context of the feedparser instance
     item = undefined
