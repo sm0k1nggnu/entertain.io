@@ -1,1 +1,0 @@
-eventric = require 'eventric'
