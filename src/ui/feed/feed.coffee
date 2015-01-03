@@ -1,4 +1,4 @@
-entryModule = angular.module("entertain.io.app.entry", [])
+feedModule = angular.module("entertain.io.app.feed", [])
 
 .filter 'unsafe', ($sce) ->
   return (
@@ -6,9 +6,9 @@ entryModule = angular.module("entertain.io.app.entry", [])
       return $sce.trustAsHtml val
   )
 
-.controller 'EntryCtrl', ['$scope', '$http', '$sce'
+.controller 'FeedCtrl', ['$scope', '$http', '$sce'
   ($scope, $http, $sce) ->
-    $scope.entries = []
+    $scope.feeds = []
 
     socket = io()
 
@@ -26,12 +26,14 @@ entryModule = angular.module("entertain.io.app.entry", [])
 
         descriptionHtml = _feed_.summary.replace(/'/g, '"')
         try
-          feed.image = _feed_.description.match(/src="([^\"]*)"/g)[0].replace(/src=|"/g, "")
+          image = _feed_.description.match(/src="([^\"]*)"/g)[0].replace(/src=|"/g, "")
+          if image.split('.').pop() in ['png','jpg','jpeg','gif']
+            feed.image = image
         feed.description = _feed_.description.replace(/<(?:.|\n)*?>/gm, '')
-        $scope.entries.push feed
+        $scope.feeds.push feed
         $scope.$apply()
       return
 
 ]
 
-module.exports = entryModule.name
+module.exports = feedModule.name

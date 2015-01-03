@@ -1,15 +1,15 @@
-.entry-ctrl {
+.feed-ctrl {
   margin: auto;
   // width: 970px;
   position: relative;
-  .entries {
+  .feeds {
     float: left;
     width: 635px;
   }
-  .entry-wrapper {
+  .feed-wrapper {
     float: left;
 
-    .entry {
+    .feed {
       width: 600px;
       height: 375px;
       display: flex;

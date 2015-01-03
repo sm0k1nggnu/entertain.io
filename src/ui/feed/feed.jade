@@ -1,0 +1,11 @@
+.feed-ctrl(ng-controller="FeedCtrl")
+  .feeds
+    div.feed-wrapper(ng-repeat="feed in feeds", ng-show="feed.image")
+      .feed(style="background-image: url({{feed.image}});")
+        .extra
+        .gradient
+        .meta
+          span.caption {{feed.title | limitTo: 50}}
+          span.description(ng-bind="feed.description | limitTo: 200")
+          .time
+            a(href="{{feed.link}}") read more
