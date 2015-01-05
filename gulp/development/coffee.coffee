@@ -9,6 +9,7 @@ module.exports = (gulp) ->
       '!./**/*.spec.coffee'
     ])
     .pipe coffee()
+    .on 'error', -> @emit 'end'
     .pipe commonjsWrap
       pathModifier: (filePath) ->
         filePath = filePath.replace(process.cwd(), 'entertain.io-app').replace /.js$/, ''

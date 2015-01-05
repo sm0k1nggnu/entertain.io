@@ -7,8 +7,10 @@ module.exports = (gulp) ->
       'src/**/*.scss'
     ])
     .pipe(
-      sass()
+      sass
+        errLogToConsole: true
     )
+    .on 'error', -> @emit 'end'
     .pipe(
       concat 'app.css'
     )

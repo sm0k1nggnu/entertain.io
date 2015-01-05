@@ -9,6 +9,7 @@ module.exports = (gulp) ->
     .pipe(
       jade()
     )
+    .on 'error', -> @emit 'end'
     .pipe(
       gulp.dest 'build'
     )
