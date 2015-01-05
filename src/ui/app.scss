@@ -5,7 +5,9 @@ body {
   margin: 0;
   padding: 0;
   background: #ecf0f1;
-  // background: #efefef;
+  font-family: Open Sans;
+  color: #202020;
+  font-size: 0.750em;
 }
 
 .app {
@@ -87,6 +89,7 @@ body {
 
     .logo {
       a {
+        text-decoration: none;
         &:hover {
           text-decoration: none;
         }
@@ -94,7 +97,6 @@ body {
     }
 
     .logo-wrapper {
-      // width: 970px;
       margin-left: 20px;
     }
 

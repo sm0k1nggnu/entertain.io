@@ -2,11 +2,12 @@
   ul.feeds
     li.feed(ng-repeat="feed in feeds", ng-show="feed.image")
       a(href="{{feed.link}}", target="_blank")
-        .cover(style="background-image: url({{feed.image}});")
+        .cover
+          img(src="{{feed.image}}")
         .content
           .wrapper
             .title {{feed.title}}
             .description {{feed.description | limitTo: 200}}
             .meta
-              span By
+              span via
               strong  Dressed Like Machines
