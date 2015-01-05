@@ -8,33 +8,6 @@ body {
   // background: #efefef;
 }
 
-.sidebar {
-  float: right;
-  background: #fefefe;
-  border-left: 1px solid #ddd;
-  align-self: stretch;
-  .schema {
-    width: 320px;
-    // border: 1px solid #ddd;
-    display: block;
-    padding: 10px;
-    font-family: Open Sans;
-    font-size: 10px;
-    font-weight: 600;
-    color: #666;
-  }
-  .ad {
-    height: 250px;
-  }
-  .newsletter {
-    height: 125px;
-  }
-  .top {
-    // height: calc(100vh - 100px);
-  }
-}
-
-
 .app {
   display: flex;
   flex-direction: column;
@@ -43,16 +16,24 @@ body {
 
 .main {
   flex: 1;
-  overflow: auto;
   display: flex;
-  align-items: flex-start;
 }
 
-.content {
-  flex: 1;
+
+.container {
   display: flex;
-  overflow: auto;
-  flex-wrap: wrap;
+  flex: 1;
+  flex-direction: row;
+
+  .content {
+    overflow: auto;
+    flex: 1;
+  }
+  .sidebar {
+    background: #fefefe;
+    border-left: 1px solid #ddd;
+    width: 300px;
+  }
 }
 
 .footer {
@@ -70,9 +51,6 @@ body {
     img {
       height: 20px;
       margin-left: 10px;
-    }
-    span {
-      // margin-left: 10px;
     }
   }
   ul {
