@@ -1,11 +1,12 @@
 .feed-ctrl(ng-controller="FeedCtrl")
-  .feeds
-    div.feed-wrapper(ng-repeat="feed in feeds", ng-show="feed.image")
-      .feed(style="background-image: url({{feed.image}});")
-        .extra
-        .gradient
-        .meta
-          span.caption {{feed.title | limitTo: 50}}
-          span.description(ng-bind="feed.description | limitTo: 200")
-          .time
-            a(href="{{feed.link}}") read more
+  ul.feeds
+    li.feed(ng-repeat="feed in feeds", ng-show="feed.image")
+      a(href="{{feed.link}}", target="_blank")
+        .cover(style="background-image: url({{feed.image}});")
+        .content
+          .wrapper
+            .title {{feed.title}}
+            .description {{feed.description | limitTo: 200}}
+            .meta
+              span By
+              strong  Dressed Like Machines
