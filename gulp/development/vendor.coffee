@@ -26,8 +26,9 @@ module.exports = (gulp) ->
 
 
   gulp.task 'build:copy:scripts', ->
+    gulp.src 'node_modules/eventric/build/dist/eventric.js'
+      .pipe gulp.dest('build/ui/scripts')
     gulp.src 'node_modules/commonjs-require/commonjs-require.js'
       .pipe gulp.dest('build/ui/scripts')
     gulp.src 'bower_components/socket.io-client/socket.io.js'
       .pipe gulp.dest('build/ui/scripts')
-
