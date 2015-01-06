@@ -12,13 +12,21 @@ feedModule = angular.module("entertain.io.app.feed", [])
 
     socket = io()
 
+    $scope.doSomething = ->
+      socket.emit 'createFeed'
+
     $scope.updateFeed = ->
       socket.emit 'updateFeed'
       false
 
+    # Log Feeds from MongoDB
+    socket.on 'mongoFeeds', (mongoFeeds) ->
+      console.log "FEEDS"
+      console.log mongoFeeds
+
+
     $http.get('/feeds.json')
     socket.on 'feedUpdate', (feeds) ->
-      console.log "feedupdate"
       for _feed_ in feeds
         feed =
           title: _feed_.title
