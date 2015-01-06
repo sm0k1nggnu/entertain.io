@@ -32,9 +32,6 @@ feedContext.addCommandHandler "CreateFeed", (params, done) ->
 feedContext.addProjection "Feeds", ->
   @stores = ["mongodb"]
   @handleFeedCreated = (domainEvent, done) ->
-    
-    # console.log('Feeds Projection');
-    # console.log(domainEvent);
     feed =
       id: domainEvent.aggregate.id
       caption: "No Caption"
@@ -46,12 +43,9 @@ feedContext.addProjection "Feeds", ->
   return
 
 feedContext.addQueryHandler "getAllFeeds", (params, callback) ->
-  console.log "geefefe"
   @$projectionStore("mongodb", "Feeds").then (feedsMongoDbCollection) ->
     feedsMongoDbCollection.find {}, (feedsCursor) ->
       feedsCursor.toArray (feedsArray) ->
-        console.log "feedsArray"
-        console.log feedsArray
         callback null, feedsArray
         return
       return

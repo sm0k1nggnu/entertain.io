@@ -94,7 +94,6 @@ if __Environment is "dev"
   feedContext.initialize()
 
 
-
   io.on 'connection', (socket) ->
     console.log "User Connected"
     socket.on 'disconnect', ->
@@ -106,11 +105,11 @@ if __Environment is "dev"
       )
 
   feedContext.subscribe "projection:Feeds:changed", (event) ->
-    console.log "CHANGENGENGENGNE"
-    io.emit 'mongoFeeds', "jiha"
+    console.log "Feeds Projection Changed"
     feedContext.query "getAllFeeds"
     .then (feeds) ->
       console.log feeds
+      io.emit 'mongoFeeds', feeds
     return
 
 
