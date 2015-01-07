@@ -10,23 +10,21 @@ request                 = require "request"
 eventric                = require "eventric"
 eventricMongoStore      = require "eventric-store-mongodb"
 
-
-
-# # # #
-# Helper (Todo, move into helper-structur)
-# #
-getParamFromArg = (param) ->
-  process.argv[process.argv.indexOf(param)+1]
-
+paramHandler = require '../helper/paramHandler'
 
 
 # # # #
 # Initial Variables
 # #
-__PORT = getParamFromArg '--port'
-__projectdir = "#{__dirname.replace('/src/server','')}/build/ui"
-__Environment = if __PORT is 8000 then "production" else "dev"
+__PORT        = undefined
+__environment = undefined
 
+# - Define Vars From Arguments
+paramHandler.all (payload) ->
+  __PORT        = payload.port  or false
+  __environment = payload.env   or false
+
+__projectdir = "#{__dirname.replace('/src/server','')}/build/ui"
 
 
 
@@ -67,7 +65,6 @@ app.get '/feeds.json', (req, res) ->
     res.send feedsCollection
     io.emit 'feedUpdate', feedsCollection
 
-  
   feedparser.on "error", (error) ->
   # always handle errors
 
@@ -85,7 +82,7 @@ app.get '/feeds.json', (req, res) ->
 # # # #
 # Eventric Feed Stuff
 # #
-if __Environment is "dev"
+if __environment is "development"
   eventric.log.setLogLevel "debug"
   eventric.addStore "mongodb", eventricMongoStore
   eventric.set "default domain events store", "mongodb"
