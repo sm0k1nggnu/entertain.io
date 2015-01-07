@@ -3,7 +3,7 @@
 module.exports = (gulp) ->
   gulp.task 'build:webserver', ->
     node.kill() if node
-    node = spawn "coffee", ["src/server", '--port', '8000'],
+    node = spawn "coffee", 'src/server --port 8000 --env development'.split(' '),
       stdio: "inherit"
     node.on "close", (code) ->
       switch code
