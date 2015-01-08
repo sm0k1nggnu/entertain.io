@@ -1,19 +1,14 @@
 class ParamHandler
-  all: (callback) ->
+  constructor: (@payload = {}) ->
 
-    process = 'src/server --port 8000 --env development'
-    match = process.match /--[a-zA-Z]* ([a-zA-Z0-9]*)/g
 
-    payload = {}
-
-    match.map (found) ->
+  getArguments: (process, callback) ->
+    match = process.argv.join(' ').match /--[a-zA-Z]* ([a-zA-Z0-9]*)/g
+    match.map (found) =>
       parse = found.match(/--([a-zA-Z]*)\s/)
-      payload[parse[1]] = found.replace parse[0], ''
+      @payload[parse[1]] = found.replace parse[0], ''
 
-    callback payload
-
-    return
-
+    callback @payload
 
 
 module.exports = new ParamHandler
