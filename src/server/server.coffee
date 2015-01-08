@@ -1,58 +1,52 @@
 express                 = require 'express'
-app                     = express()
-http                    = require('http').Server(app)
-io                      = require('socket.io')(http)
-eventric                = require "eventric"
-eventricMongoStore      = require "eventric-store-mongodb"
-
+webserver               = express()
+http                    = require('http').Server(webserver)
+websocket               = require('socket.io')(http)
+eventric                = require 'eventric'
+eventric                = require 'eventric'
+socketIORemoteEndpoint  = require 'eventric-remote-socketio-endpoint'
+eventricMongoStore      = require 'eventric-store-mongodb'
 
 class Server
+
   run: ->
     @_paramHandler = require('./helper/paramHandler')
+    @_projectdir = "#{__dirname.replace('/src/server','')}/build/ui"
+
+    # Get passed arguments and start server
     @_paramHandler.getArguments process
     .then (payload) ->
       http.listen payload.port, ->
         console.log "EntertainIO runs at: http://localhost:#{payload.port}"
 
-    @_projectdir = "#{__dirname.replace('/src/server','')}/build/ui"
-
     # Respond App
-    app.get '/', (req, res) =>
+    webserver.get '/', (req, res) =>
       res.sendFile "#{@_projectdir}/index.html"
 
     # Handle static files
-    app.use express.static @_projectdir
+    webserver.use express.static @_projectdir
 
-    @readFeeds()
-
-
-  readFeeds: ->
-    @_reader  = require('./reader')
-      app: app
-      io: io
+    @_readFeeds()
+    @_initializeEventric()
 
 
-  initializeEventric: ->
-    eventric.log.setLogLevel "debug"
+
+  _readFeeds: ->
+    @_reader  = require('./reader')( webserver: webserver, websocket: websocket )
+
+
+  _initializeEventric: ->
+    # eventric.log.setLogLevel "debug"
     eventric.addStore "mongodb", eventricMongoStore
     eventric.set "default domain events store", "mongodb"
 
-    feedContext = require '../context/feed'
-    feedContext.initialize()
+    socketIORemoteEndpoint.initialize ioInstance: websocket, =>
+      eventric.addRemoteEndpoint 'socketio', socketIORemoteEndpoint
 
-    io.on 'connection', (socket) ->
-      socket.on 'createFeed', ->
-        feedContext.command("CreateFeed",
-            caption: "Foo"
-        )
-
-    feedContext.subscribe "projection:Feeds:changed", (event) ->
-      console.log "Feeds Projection Changed"
-      feedContext.query "getAllFeeds"
-      .then (feeds) ->
-        console.log feeds
-        io.emit 'mongoFeeds', feeds
-
+      eventric.subscribeToDomainEvent (domainEvent) =>
+        console.log "eventric subscribe to domain event"
+        console.log domainEvent
+        websocket.emit 'DomainEvent', domainEvent
 
 
 module.exports = new Server
