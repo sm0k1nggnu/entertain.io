@@ -22,6 +22,10 @@ feedContext.addAggregate "Feed", ->
   return
 
 
+feedContext.addCommandHandler "TestCommand", (params, done) ->
+  console.log "---------------- TestCommand ----------------"
+
+
 feedContext.addCommandHandler "CreateFeed", (params, done) ->
   @$aggregate.create("Feed", params).then((feed) ->
     feed.$save()
