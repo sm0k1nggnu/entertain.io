@@ -5,28 +5,28 @@ express                 = require 'express'
 app                     = express()
 http                    = require('http').Server(app)
 io                      = require('socket.io')(http)
-FeedParser              = require "feedparser"
-request                 = require "request"
 eventric                = require "eventric"
 eventricMongoStore      = require "eventric-store-mongodb"
 
-paramHandler = require '../helper/paramHandler'
+paramHandler            = require('../helper/paramHandler')
+reader                  = require('./reader')
+  app: app
+  io: io
+
 
 
 # # # #
 # Initial Variables
 # #
 __PORT        = undefined
-__environment = undefined
+__ENVIROMENT = undefined
+__projectdir  = "#{__dirname.replace('/src/server','')}/build/ui"
 
-# - Define Vars From Arguments
-paramHandler.all (payload) ->
+
+# - Define Vars From ProcessArguments
+paramHandler.getArguments process, (payload) ->
   __PORT        = payload.port  or false
-  __environment = payload.env   or false
-
-__projectdir = "#{__dirname.replace('/src/server','')}/build/ui"
-
-
+  __ENVIROMENT = payload.env   or false
 
 
 # # # #
@@ -46,43 +46,9 @@ app.use express.static __projectdir
 
 
 # # # #
-# Get Feeds
-# #
-app.get '/feeds.json', (req, res) ->
-  feedsCollection = []
-  req = request("http://www.drlima.net/feed/")
-
-  feedparser = new FeedParser()
-  req.on "error", (error) ->
-
-  req.on "response", (res) ->
-    stream = this
-    return @emit("error", new Error("Bad status code"))  unless res.statusCode is 200
-    stream.pipe feedparser
-    return
-
-  feedparser.on "end", ->
-    res.send feedsCollection
-    io.emit 'feedUpdate', feedsCollection
-
-  feedparser.on "error", (error) ->
-  # always handle errors
-
-  feedparser.on "readable", ->
-    stream = this
-    meta = @meta # **NOTE** the "meta" is always available in the context of the feedparser instance
-    item = undefined
-    while item = stream.read()
-      feedsCollection.push item
-
-
-
-
-
-# # # #
 # Eventric Feed Stuff
 # #
-if __environment is "development"
+if __ENVIROMENT is "development"
   eventric.log.setLogLevel "debug"
   eventric.addStore "mongodb", eventricMongoStore
   eventric.set "default domain events store", "mongodb"
