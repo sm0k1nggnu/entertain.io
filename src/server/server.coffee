@@ -8,7 +8,7 @@ io                      = require('socket.io')(http)
 eventric                = require "eventric"
 eventricMongoStore      = require "eventric-store-mongodb"
 
-paramHandler            = require('../helper/paramHandler')
+paramHandler            = require('./helper/paramHandler')
 reader                  = require('./reader')
   app: app
   io: io
