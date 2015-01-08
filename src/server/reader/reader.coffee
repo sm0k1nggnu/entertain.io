@@ -1,16 +1,15 @@
 FeedParser              = require "feedparser"
 request                 = require "request"
+feedContext             = require "../../context/feed"
 
 class Reader
   constructor: (@modules) ->
-    @modules.app.get '/feeds.json', (req, res) =>
+    @modules.webserver.get '/feeds.json', (req, res) =>
       feedsCollection = []
       req = request("http://www.drlima.net/feed/")
 
-
       feedparser = new FeedParser()
       req.on "error", (error) ->
-
 
       req.on "response", (res) ->
         stream = this
@@ -18,15 +17,11 @@ class Reader
         stream.pipe feedparser
         return
 
-
       feedparser.on "end", =>
+        feedContext.initialize().then ->
+          feedContext.command 'TestCommand'
         res.send feedsCollection
-        @modules.io.emit 'feedUpdate', feedsCollection
-
-
-      feedparser.on "error", (error) ->
-      # always handle errors
-
+        @modules.websocket.emit 'feedUpdate', feedsCollection
 
       feedparser.on "readable", ->
         stream = this
@@ -36,5 +31,5 @@ class Reader
           feedsCollection.push item
 
 
-module.exports = (app) ->
-  new Reader(app)
+module.exports = (modules) ->
+  new Reader modules
