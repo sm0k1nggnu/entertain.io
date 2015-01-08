@@ -37,13 +37,21 @@
         display: block;
       }
 
-      .meta {
+      .source {
+        height: 50px;
+        background: white;
+        position: relative;
+        .wrapper {
+          position: absolute;
+          top: 15px;
+          left: 15px;
+        }
         strong {
           color: #00b9ee;
         }
       }
 
-      .title, .description, .meta {
+      .title, .description {
         margin: 10px 0;
       }
     }

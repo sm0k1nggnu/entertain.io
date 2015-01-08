@@ -3,12 +3,13 @@
   ul.feeds
     li.feed(ng-repeat="feed in feeds", ng-show="feed.image")
       a(href="{{feed.link}}", target="_blank")
+        .source
+          .wrapper
+            span via
+            strong  Dressed Like Machines
         .cover
           img(src="{{feed.image}}")
         .content
           .wrapper
             .title {{feed.title}}
             .description {{feed.description | limitTo: 200}}
-            .meta
-              span via
-              strong  Dressed Like Machines
