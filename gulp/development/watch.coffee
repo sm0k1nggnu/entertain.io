@@ -1,4 +1,3 @@
-
 module.exports = (gulp) ->
   gulp.task 'build:watch', ->
     gulp.watch [
@@ -14,6 +13,11 @@ module.exports = (gulp) ->
       '!src/**/*.spec.coffee'
     ], [
       'build:coffee'
+    ]
+
+    gulp.watch [
+      'src/**/*.spec.coffee'
+    ], [
       'specs'
     ]
 
