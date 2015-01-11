@@ -3,7 +3,7 @@ coffee  = require 'gulp-coffee'
 
 module.exports = (gulp) ->
   gulp.task 'specs', ->
-    gulp.src('src/contexts/**/*.spec.coffee',
+    gulp.src('src/**/*.spec.coffee',
       read: false
     )
     .pipe coffee()
