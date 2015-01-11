@@ -15,11 +15,13 @@
   "homepage": "https://github.com/michaelzoidl/entertain.io",
   "dependencies": {
     "eventric": "~0.1.13",
-    "socket.io": "~1.2.1",
+    "eventric-remote-socketio-endpoint": "^0.1.2",
+    "eventric-store-mongodb": "^0.1.0",
     "express": "~4.10.5",
-    "path": "~0.4.9",
     "feedparser": "~0.19.2",
-    "request": "~2.51.0"
+    "path": "~0.4.9",
+    "request": "~2.51.0",
+    "socket.io": "~1.2.1"
   },
   "devDependencies": {
     "coffee-script": "~1.8.0",
