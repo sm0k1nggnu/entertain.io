@@ -1,14 +1,23 @@
-# Give us a array
-Queue.loop(ARRAY)
 
-# What should we do with each loop-list-item?
-Queue.job(FUNCTION)
+# With this module we want to realize this:
 
-# Do you wish a event if we finished the loop-list?
-Queue.done(FUNCTION)
+```javascript
+// This example shows not how powerfull the module is, its just a showcase to see the functions
 
-# Should we make a time-break between each loop-job?
-Queue.sleep(INTEGER)
+Queue = require 'Queue'
+Heros = []
 
-# How often should we return the loop-list?
-Queue.times(INTEGER)
+Queue
+.loop(['Wonder Woman', 'Aquaman', 'Martian Manhunter', 'Green Lantern'])
+.job(function(hero, next){
+  Heros.push(hero);
+  next();
+})
+.done(function(){
+  console.log('This is the Justice League:');
+  console.log(Heros);
+})
+.times(5);
+
+
+```
