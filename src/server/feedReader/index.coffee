@@ -1,7 +1,7 @@
 ###
   Jonathan <jonathan.haeberle@gmail.com>
 
-   @feeds: Array<strings> Array mit einzelnen URLs der feeds
+   @feeds: Array<{url :string}> Array mit einzelnen URLs der feeds
    @cb: function(feedItem)  neuer Feed
 ###
 
@@ -23,8 +23,8 @@ class FeedReader
   fetch: (feeds, callback) =>
     async.each feeds, @request, callback
 
-  request: (url, callback) =>
-    request.get url, (err, req, body) =>
+  request: (feed, callback) =>
+    request.get feed.url, (err, req, body) =>
       return callback err if err
       @handleFeed body, callback
 
