@@ -15,7 +15,7 @@ class FeedReader
 
     async.forever (next) =>
       @fetch feeds, (err) ->
-        console.log 'done fetching feeds'
+#        console.log 'done fetching feeds'
         console.log 'Error while fetching', err if err
 
       setTimeout(next, 10000);  # restart request
