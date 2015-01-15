@@ -26,20 +26,18 @@ class FeedReader
   request: (feed, callback) =>
     request.get feed.url, (err, req, body) =>
       return callback err if err
-      @handleFeed body, callback
+      @handleFeed feed, body, callback
 
-  handleFeed: (feedStr, callback) =>
-    parseString feedStr, (err, feed) =>
+  handleFeed: (feed, feedStr, callback) =>
+    parseString feedStr, (err, f) =>
       return callback err if err
-      items = feed.rss.channel[0].item
-      items.forEach @addItem
+      items = f.rss.channel[0].item
+      items.forEach (item) =>
+        guid = item.guid[0]._
+        unless @allItems.hasOwnProperty guid
+          @allItems[guid] = item
+          @feedItemCallback item, feed
       callback()
-
-  addItem: (item) =>
-    guid = item.guid[0]._
-    unless @allItems.hasOwnProperty guid
-      @allItems[guid] = item
-      @feedItemCallback item
 
 
 module.exports = FeedReader
