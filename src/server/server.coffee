@@ -30,6 +30,27 @@ class Server
     @_initializeEventric()
 
 
+    db = [{name:'jiha'}]
+
+    websocket.on 'connection', (socket) ->
+      console.log "USER CONNECTED"
+
+      socket.on 'FeedContextGetFeeds', (func) ->
+        func(db)
+
+      socket.on 'FeedContextCreateFeed', () ->
+        db.push {name:''}
+        socket.broadcast.emit 'FeedContextFeedCreated'
+
+      socket.on 'FeedContextRemoveAllFeeds', () ->
+        db = [{}]
+        socket.broadcast.emit 'FeedContextFeedsRemoved'
+
+      socket.on 'FeedContextChangeFeedTitle', (payload) ->
+        db[payload.feedId].name = payload.feedTitle
+        socket.broadcast.emit 'FeedContextFeedTitleChanged', payload
+
+
 
   _readFeeds: ->
     @_reader  = require('./reader')( webserver: webserver, websocket: websocket )

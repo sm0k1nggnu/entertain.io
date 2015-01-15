@@ -1,0 +1,9 @@
+.feeds-ctrl(ng-controller="FeedsCtrl")
+  h1 Feeds
+
+  strong List of all Feeds
+  ul
+    li(ng-repeat="(feedKey, feed) in feeds track by $index")
+      input(type="input", ng-model="feed.name", ng-change="updateFeed($index)")
+    button(ng-click="createFeed()") +
+  button(ng-click="removeFeeds()") Clear All
