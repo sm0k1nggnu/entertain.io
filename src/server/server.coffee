@@ -6,6 +6,7 @@ eventric                = require 'eventric'
 eventric                = require 'eventric'
 socketIORemoteEndpoint  = require 'eventric-remote-socketio-endpoint'
 eventricMongoStore      = require 'eventric-store-mongodb'
+FeedReader              = require './feedReader'
 
 class Server
 
@@ -26,34 +27,36 @@ class Server
     # Handle static files
     webserver.use express.static @_projectdir
 
-    @_readFeeds()
+    # @_readFeeds()
     @_initializeEventric()
 
+    @db = [{name:'jiha',url:'http://www.drlima.net/feed/',items:[]}]
 
-    db = [{name:'jiha'}]
+    websocket.on 'connection', (socket) =>
 
-    websocket.on 'connection', (socket) ->
+      @feedReader = new FeedReader @db, (item, dbItem) ->
+        dbItem.items.push item
+        socket.broadcast.emit 'FeedContextUpdateDB', @db
+
       console.log "USER CONNECTED"
 
-      socket.on 'FeedContextGetFeeds', (func) ->
-        func(db)
+      socket.on 'FeedContextGetFeeds', (callback) =>
+        console.log @feedReader.allItems
+        callback(@db)
 
-      socket.on 'FeedContextCreateFeed', () ->
-        db.push {name:''}
+      socket.on 'FeedContextCreateFeed', () =>
+        @db.push {name:'',url:'',items:[]}
         socket.broadcast.emit 'FeedContextFeedCreated'
 
-      socket.on 'FeedContextRemoveAllFeeds', () ->
-        db = [{}]
+      socket.on 'FeedContextRemoveAllFeeds', () =>
+        @db.splice(0,@db.length)
         socket.broadcast.emit 'FeedContextFeedsRemoved'
 
-      socket.on 'FeedContextChangeFeedTitle', (payload) ->
-        db[payload.feedId].name = payload.feedTitle
+      socket.on 'FeedContextChangeFeed', (payload) =>
+        @db[payload.feedId].name = payload.feedTitle
+        @db[payload.feedId].url = payload.feedURL
         socket.broadcast.emit 'FeedContextFeedTitleChanged', payload
 
-
-
-  _readFeeds: ->
-    @_reader  = require('./reader')( webserver: webserver, websocket: websocket )
 
 
   _initializeEventric: ->

@@ -4,6 +4,14 @@
   strong List of all Feeds
   ul
     li(ng-repeat="(feedKey, feed) in feeds track by $index")
-      input(type="input", ng-model="feed.name", ng-change="updateFeed($index)")
+      span
+        | name
+        input(type="input", ng-model="feed.name", ng-change="updateFeed($index)")
+      span
+        | url
+        input(type="input", ng-model="feed.url", ng-change="updateFeed($index)")
+      span
+        | items
+        pre {{feed.items | json}}
     button(ng-click="createFeed()") +
   button(ng-click="removeFeeds()") Clear All

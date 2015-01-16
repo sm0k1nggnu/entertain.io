@@ -6,41 +6,50 @@ feedsModule = angular.module("entertain.io.app.feeds", [])
 
     socket = io()
 
-    socket.emit 'FeedContextGetFeeds', (feeds) ->
-      $scope.feeds = feeds
+    socket.emit 'FeedContextGetFeeds', (feedDB) ->
+      $scope.feeds = feedDB
       $scope.$apply()
 
+
+
     $scope.createFeed = ->
-      $scope.feeds.push {name:''}
-      socket.emit 'FeedContextCreateFeed',
+      $scope.feeds.push {name:'',url:'',items:[]}
+      socket.emit 'FeedContextCreateFeed'
 
 
     $scope.removeFeeds = ->
-      $scope.feeds = [{}]
-      socket.emit 'FeedContextRemoveAllFeeds',
+      $scope.feeds = []
+      socket.emit 'FeedContextRemoveAllFeeds'
 
 
     $scope.updateFeed = (index) ->
-      console.log $scope.feeds[index].name
-      socket.emit 'FeedContextChangeFeedTitle',
+      socket.emit 'FeedContextChangeFeed',
         payload =
           feedId: index
           feedTitle: $scope.feeds[index].name
+          feedURL: $scope.feeds[index].url
+
 
 
     socket.on 'FeedContextFeedTitleChanged', (payload) ->
       $scope.feeds[payload.feedId].name = payload.feedTitle
+      $scope.feeds[payload.feedId].url = payload.feedURL
       $scope.$apply()
 
 
     socket.on 'FeedContextFeedCreated', () ->
-      $scope.feeds.push {name:''}
+      $scope.feeds.push {name:'', url: '', items:[]}
       $scope.$apply()
 
 
     socket.on 'FeedContextFeedsRemoved', () ->
       console.log "foobar"
-      $scope.feeds = [{}]
+      $scope.feeds = [{name:'',url:'',items:[]}]
+      $scope.$apply()
+
+
+    socket.on 'FeedContextUpdateDB', (db) ->
+      $scope.feeds = db
       $scope.$apply()
 
 ]
