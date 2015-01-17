@@ -3,7 +3,6 @@ webserver               = express()
 http                    = require('http').Server(webserver)
 websocket               = require('socket.io')(http)
 eventric                = require 'eventric'
-eventric                = require 'eventric'
 socketIORemoteEndpoint  = require 'eventric-remote-socketio-endpoint'
 eventricMongoStore      = require 'eventric-store-mongodb'
 
