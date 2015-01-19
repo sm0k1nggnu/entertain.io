@@ -44,13 +44,13 @@ feedsModule = angular.module("entertain.io.app.feedManager", [])
 
 
     socket.on 'FeedContextFeedSourceRemoved', () ->
-      console.log "foobar"
+      console.log "FeedContextFeedSourceRemoved"
       $scope.feedSources = [{name:'',url:'',items:[]}]
       $scope.$apply()
 
 
     socket.on 'FeedSourceContextUpdateDB', (db) ->
-      console.log "jiha"
+      console.log "FeedSourceContextUpdateDB"
       $scope.feedSources = db
       $scope.$apply()
 
