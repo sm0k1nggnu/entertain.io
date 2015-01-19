@@ -5,7 +5,7 @@
 </p>
 <br>
 <br>
-*Visit production version: <a target="_blank" href="http://entertain.io/#/">www.entertain.io</a>*<br>
+*Visit production version: <a target="_blank" href="http://entertain.io/#/">entertain.io</a>*<br>
 
 
 ## Getting started
