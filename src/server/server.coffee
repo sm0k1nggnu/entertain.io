@@ -31,9 +31,7 @@ class Server
 
 
 
-
-    # @db = [{name:'jiha',url:'http://www.drlima.net/feed/',items:[]}]
-
+    # Instance-DB
     @db = {
       feedSources: [{
         name: "WIRED - Top Stories"
@@ -43,47 +41,38 @@ class Server
     }
 
 
-
+    # Handle User SocketRequests after connection
     websocket.on 'connection', (socket) =>
 
-      @feedReader = new FeedReader @db.feedSources, (item, dbItem) ->
-        # runs when new content found
-        # dbItem.items.push item
-        # console.log @db
-        # socket.broadcast.emit 'FeedSourceContextUpdateDB', @db
-        # console.log "feadReader runned"
-        # console.log @db
-        # console.log item
-        # console.log dbItem
-        return
+      feedReader = new FeedReader @db.feedSources, (item, dbItem) =>
+        @db.feedItems.push item
+        socket.broadcast.emit 'FeedSourceContextAddedFeedItem', item
 
-      console.log "USER CONNECTED"
+      socket.on 'FeedContextGetFeedItems', (callback) =>
+        console.log "FeedContextGetFeedItems"
+        callback(@db.feedItems)
 
       socket.on 'FeedContextGetFeedSources', (callback) =>
-        console.log "FeedContextGetFeeds"
-        # console.log @feedReader.allItems
+        console.log "FeedContextGetFeedSources"
         callback(@db.feedSources)
 
       socket.on 'FeedContextCreateFeedSource', () =>
-        console.log "FeedContextCreateFeed"
+        console.log "FeedContextCreateFeedSource"
         @db.feedSources.push {name:'',url:''}
         socket.broadcast.emit 'FeedContextFeedSourceCreated'
 
 
       socket.on 'FeedContextRemoveAllFeedSources', () =>
-        console.log "FeedContextRemoveAllFeeds"
+        console.log "FeedContextRemoveAllFeedSources"
         @db.feedSources.splice(0,@db.feedSources.length)
         socket.broadcast.emit 'FeedContextFeedSourceRemoved'
 
 
       socket.on 'FeedContextChangeFeedSource', (payload) =>
-        console.log "FeedContextChangeFeed"
+        console.log "FeedContextChangeFeedSource"
         @db.feedSources[payload.feedId].name = payload.feedTitle
         @db.feedSources[payload.feedId].url = payload.feedURL
         socket.broadcast.emit 'FeedContextFeedSourceTitleChanged', payload
-
-
-
 
 
 
