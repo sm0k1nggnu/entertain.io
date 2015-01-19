@@ -22,8 +22,8 @@ Run Gulp<br>
 *Currently there's only this one task that handle the complete process.*<br>
 `$ gulp`
 
-Now you should see the Page on the Port 8000 (<a href="http://localhost:8000" target="_blank">localhost:8000</a>)
-
+Now you should see the Page at the Port 8000
+`localhost:8000`
 ---
 
-<a href="https://github.com/michaelzoidl/entertain.io/blob/master/LICENCE">Licence</a>
+<a href="https://github.com/michaelzoidl/entertain.io/blob/master/LICENCE.md">Licence</a>
