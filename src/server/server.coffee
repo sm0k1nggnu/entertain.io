@@ -26,7 +26,7 @@ class Server
     # Handle static files
     webserver.use express.static @_projectdir
 
-    # @_readFeeds()
+    # Eventric Stuff
     @_initializeEventric()
 
 
@@ -46,13 +46,16 @@ class Server
 
     websocket.on 'connection', (socket) =>
 
-      # @feedReader = new FeedReader @db, (item, dbItem) ->
-      #   # runs when new content found
-      #   dbItem.items.push item
-      #   # console.log @db
-      #   socket.broadcast.emit 'FeedContextUpdateDB', "as"
-      #   console.log "feadReader runned"
-      #   return
+      @feedReader = new FeedReader @db.feedSources, (item, dbItem) ->
+        # runs when new content found
+        # dbItem.items.push item
+        # console.log @db
+        # socket.broadcast.emit 'FeedSourceContextUpdateDB', @db
+        # console.log "feadReader runned"
+        # console.log @db
+        # console.log item
+        # console.log dbItem
+        return
 
       console.log "USER CONNECTED"
 
