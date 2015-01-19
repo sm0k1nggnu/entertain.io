@@ -2,56 +2,56 @@ feedsModule = angular.module("entertain.io.app.feedManager", [])
 
 .controller 'FeedManagerCtrl', ['$scope', '$http', '$sce'
   ($scope, $http, $sce) ->
-    $scope.feeds = []
+    $scope.feedSources = []
 
     socket = io()
 
-    socket.emit 'FeedContextGetFeeds', (feedDB) ->
-      $scope.feeds = feedDB
+    socket.emit 'FeedContextGetFeedSources', (feedDB) ->
+      $scope.feedSources = feedDB
       $scope.$apply()
 
 
 
     $scope.createFeed = ->
       console.log "create"
-      $scope.feeds.push {name:'',url:'',items:[]}
-      socket.emit 'FeedContextCreateFeed'
+      $scope.feedSources.push {name:'',url:'',items:[]}
+      socket.emit 'FeedContextCreateFeedSource'
 
 
     $scope.removeFeeds = ->
-      $scope.feeds = []
-      socket.emit 'FeedContextRemoveAllFeeds'
+      $scope.feedSources = []
+      socket.emit 'FeedContextRemoveAllFeedSources'
 
 
     $scope.updateFeed = (index) ->
-      socket.emit 'FeedContextChangeFeed',
+      socket.emit 'FeedContextChangeFeedSource',
         payload =
           feedId: index
-          feedTitle: $scope.feeds[index].name
-          feedURL: $scope.feeds[index].url
+          feedTitle: $scope.feedSources[index].name
+          feedURL: $scope.feedSources[index].url
 
 
 
-    socket.on 'FeedContextFeedTitleChanged', (payload) ->
-      $scope.feeds[payload.feedId].name = payload.feedTitle
-      $scope.feeds[payload.feedId].url = payload.feedURL
+    socket.on 'FeedContextFeedSourceTitleChanged', (payload) ->
+      $scope.feedSources[payload.feedId].name = payload.feedTitle
+      $scope.feedSources[payload.feedId].url = payload.feedURL
       $scope.$apply()
 
 
-    socket.on 'FeedContextFeedCreated', () ->
-      $scope.feeds.push {name:'', url: '', items:[]}
+    socket.on 'FeedContextFeedSourceCreated', () ->
+      $scope.feedSources.push {name:'', url: '', items:[]}
       $scope.$apply()
 
 
-    socket.on 'FeedContextFeedsRemoved', () ->
+    socket.on 'FeedContextFeedSourceRemoved', () ->
       console.log "foobar"
-      $scope.feeds = [{name:'',url:'',items:[]}]
+      $scope.feedSources = [{name:'',url:'',items:[]}]
       $scope.$apply()
 
 
-    socket.on 'FeedContextUpdateDB', (db) ->
+    socket.on 'FeedSourceContextUpdateDB', (db) ->
       console.log "jiha"
-      $scope.feeds = db
+      $scope.feedSources = db
       $scope.$apply()
 
 ]

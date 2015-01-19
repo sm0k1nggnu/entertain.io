@@ -29,32 +29,58 @@ class Server
     # @_readFeeds()
     @_initializeEventric()
 
-    @db = [{name:'jiha',url:'http://www.drlima.net/feed/',items:[]}]
+
+
+
+    # @db = [{name:'jiha',url:'http://www.drlima.net/feed/',items:[]}]
+
+    @db = {
+      feedSources: [{
+        name: "WIRED - Top Stories"
+        url: "http://feeds.wired.com/wired/index"
+      }]
+      feedItems: []
+    }
+
+
 
     websocket.on 'connection', (socket) =>
 
-      @feedReader = new FeedReader @db, (item, dbItem) ->
-        dbItem.items.push item
-        socket.broadcast.emit 'FeedContextUpdateDB', @db
+      # @feedReader = new FeedReader @db, (item, dbItem) ->
+      #   # runs when new content found
+      #   dbItem.items.push item
+      #   # console.log @db
+      #   socket.broadcast.emit 'FeedContextUpdateDB', "as"
+      #   console.log "feadReader runned"
+      #   return
 
       console.log "USER CONNECTED"
 
-      socket.on 'FeedContextGetFeeds', (callback) =>
-        console.log @feedReader.allItems
-        callback(@db)
+      socket.on 'FeedContextGetFeedSources', (callback) =>
+        console.log "FeedContextGetFeeds"
+        # console.log @feedReader.allItems
+        callback(@db.feedSources)
 
-      socket.on 'FeedContextCreateFeed', () =>
-        @db.push {name:'',url:'',items:[]}
-        socket.broadcast.emit 'FeedContextFeedCreated'
+      socket.on 'FeedContextCreateFeedSource', () =>
+        console.log "FeedContextCreateFeed"
+        @db.feedSources.push {name:'',url:''}
+        socket.broadcast.emit 'FeedContextFeedSourceCreated'
 
-      socket.on 'FeedContextRemoveAllFeeds', () =>
-        @db.splice(0,@db.length)
-        socket.broadcast.emit 'FeedContextFeedsRemoved'
 
-      socket.on 'FeedContextChangeFeed', (payload) =>
-        @db[payload.feedId].name = payload.feedTitle
-        @db[payload.feedId].url = payload.feedURL
-        socket.broadcast.emit 'FeedContextFeedTitleChanged', payload
+      socket.on 'FeedContextRemoveAllFeedSources', () =>
+        console.log "FeedContextRemoveAllFeeds"
+        @db.feedSources.splice(0,@db.feedSources.length)
+        socket.broadcast.emit 'FeedContextFeedSourceRemoved'
+
+
+      socket.on 'FeedContextChangeFeedSource', (payload) =>
+        console.log "FeedContextChangeFeed"
+        @db.feedSources[payload.feedId].name = payload.feedTitle
+        @db.feedSources[payload.feedId].url = payload.feedURL
+        socket.broadcast.emit 'FeedContextFeedSourceTitleChanged', payload
+
+
+
 
 
 
