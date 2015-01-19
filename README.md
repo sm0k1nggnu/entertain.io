@@ -23,7 +23,7 @@ Run Gulp<br>
 `$ gulp`
 
 Now you should see the Page at the Port 8000
-`localhost:8000`
+`$ open http://localhost:8000`
 ---
 
 <a href="https://github.com/michaelzoidl/entertain.io/blob/master/LICENCE.md">Licence</a>
