@@ -1,6 +1,6 @@
-feedsModule = angular.module("entertain.io.app.feeds", [])
+feedsModule = angular.module("entertain.io.app.feedManager", [])
 
-.controller 'FeedsCtrl', ['$scope', '$http', '$sce'
+.controller 'FeedManagerCtrl', ['$scope', '$http', '$sce'
   ($scope, $http, $sce) ->
     $scope.feeds = []
 
@@ -13,6 +13,7 @@ feedsModule = angular.module("entertain.io.app.feeds", [])
 
 
     $scope.createFeed = ->
+      console.log "create"
       $scope.feeds.push {name:'',url:'',items:[]}
       socket.emit 'FeedContextCreateFeed'
 
@@ -49,6 +50,7 @@ feedsModule = angular.module("entertain.io.app.feeds", [])
 
 
     socket.on 'FeedContextUpdateDB', (db) ->
+      console.log "jiha"
       $scope.feeds = db
       $scope.$apply()
 

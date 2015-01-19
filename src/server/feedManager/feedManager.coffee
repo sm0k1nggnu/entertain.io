@@ -1,4 +1,4 @@
-class Feeds
+class FeedManager
 
   constructor : () ->
     @_db = {}
@@ -16,4 +16,4 @@ class Feeds
     @_db[aggregate]
 
 
-module.exports = new Feeds
+module.exports = new FeedManager

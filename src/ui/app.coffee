@@ -1,6 +1,6 @@
 entertainIoApp = angular.module('entertain.io.app', [
   require 'entertain.io-app/src/ui/feed/feed'
-  require 'entertain.io-app/src/ui/feeds/feeds'
+  require 'entertain.io-app/src/ui/feedManager/feedManager'
   require 'angular-ui-router'
 ])
 
@@ -13,8 +13,8 @@ entertainIoApp = angular.module('entertain.io.app', [
       url: '/'
       templateUrl: 'feed/feed.html'
 
-    .state 'feeds',
-      url: '/feeds'
-      templateUrl: 'feeds/feeds.html'
+    .state 'feedManager',
+      url: '/feedManager'
+      templateUrl: 'feedManager/feedManager.html'
 
 module.exports = entertainIoApp.name

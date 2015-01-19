@@ -12,6 +12,14 @@ feedModule = angular.module("entertain.io.app.feed", [])
 
     socket = io()
 
+
+    socket.emit 'FeedContextGetFeeds', (feedDB) ->
+      console.log "feedCOntext und so"
+      console.log feedDB
+      $scope.feeds = feedDB
+      $scope.$apply()
+
+
     $scope.doSomething = ->
       socket.emit 'createFeed'
 

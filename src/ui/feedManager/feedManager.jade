@@ -1,5 +1,5 @@
-.feeds-ctrl(ng-controller="FeedsCtrl")
-  h1 Feeds
+.feed-manager-ctrl(ng-controller="FeedManagerCtrl")
+  h1 Feed Manager
 
   strong List of all Feeds
   ul
@@ -12,6 +12,6 @@
         input(type="input", ng-model="feed.url", ng-change="updateFeed($index)")
       span
         | items
-        pre {{feed.items | json}}
+        pre {{feed.items.length}}
     button(ng-click="createFeed()") +
   button(ng-click="removeFeeds()") Clear All

@@ -15,18 +15,21 @@ class FeedReader
 
     async.forever (next) =>
       @fetch feeds, (err) ->
-#        console.log 'done fetching feeds'
         console.log 'Error while fetching', err if err
 
-      setTimeout(next, 10000);  # restart request
+      # restart request
+      setTimeout(next, 1000)
+
 
   fetch: (feeds, callback) =>
     async.each feeds, @request, callback
+
 
   request: (feed, callback) =>
     request.get feed.url, (err, req, body) =>
       return callback err if err
       @handleFeed feed, body, callback
+
 
   handleFeed: (feed, feedStr, callback) =>
     parseString feedStr, (err, f) =>
