@@ -9,7 +9,7 @@ request       = require 'request'
 parseRSSFeed  = require('xml2js').parseString
 
 class FeedReader
-  constructor: (@feeds, @feedItemCallback) ->
+  constructor: (feeds, @feedItemCallback) ->
     @allItems = {}
 
     async.forever (next) =>
@@ -17,19 +17,17 @@ class FeedReader
         console.log 'Error while fetching', err if err
 
       # restart request
-      setTimeout(next, 1000)
+      setTimeout next, 1000
 
 
   fetch: (feeds, callback) =>
-    async.each feeds, @request, callback
+    async.each feeds, (feed, callback) =>
+      request.get feed.url, (err, req, body) =>
+        if err
+          return callback err
 
-
-  request: (feed, callback) =>
-    request.get feed.url, (err, req, body) =>
-      if err
-        return callback err
-
-      @handleFeed feed, body, callback
+        @handleFeed feed, body, callback
+    , callback
 
 
   handleFeed: (feed, feedBody, callback) =>
@@ -52,4 +50,3 @@ class FeedReader
 
 
 module.exports = FeedReader
-
