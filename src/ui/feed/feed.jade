@@ -1,12 +1,11 @@
 .feed-ctrl(ng-controller="FeedCtrl")
-  button(ng-click="doSomething()") log something
   ul.feeds
-    li.feed(ng-repeat="feed in feeds", ng-show="feed.image")
+    li.feed(ng-repeat="feed in feeds")
       a(href="{{feed.link}}", target="_blank")
         .source
           .wrapper
             span via
-            strong  Dressed Like Machines
+            strong  WIRED
         .cover
           img(src="{{feed.image}}")
         .content
