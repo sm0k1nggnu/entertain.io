@@ -13,13 +13,13 @@ body
     header.header
       .logo-wrapper
         .logo
-          a(href=".")
+          a(ui-sref="feed")
             span.a Entertain
             span.b IO
       navigation.navigation
         ul
           li
-            a.active Overview
+            a.active(ui-sref="feed") Overview
     .main
       .container
         .content(ui-view="")
